@@ -58,7 +58,7 @@ def check_resource(drink, resources = resources):
 
 #5 Process coins
 def process_coins(q, d, n, p):
-    return q*0.25 + d*0.1 + n*0.05 + p*0.01
+    return int(q*0.25 + d*0.1 + n*0.05 + p*0.01)
 
 
 #6 Check transaction successful?
@@ -87,3 +87,18 @@ def make_coffee(order_drink, q, d, n, p, res = resources, prof = profit):
     return res, prof
 
     
+#1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino):
+order = input("What would you like? (espresso/latte/cappuccino):")
+
+while order not in ["espresso", "latte", "cappuccino", "report", "off"]:
+    print("Sorry. I don't understand.")
+    order = input("What would you like? (espresso/latte/cappuccino):")
+
+#2. Turn off the Coffee Machine by entering “ off ” to the prompt.
+    if order == "off":
+        break
+    elif order == "report":
+        print_report
+        order = input("What would you like? (espresso/latte/cappuccino):")
+    else:
+        print(f"{order} is MENU[{order}]["cost"])
