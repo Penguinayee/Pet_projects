@@ -3,6 +3,7 @@ MENU = {
         "ingredients": {
             "water": 50,
             "coffee": 18,
+            "milk" : 0,
         },
         "cost": 1.5,
     },
@@ -34,6 +35,7 @@ resources = {
 
 #3 Print report
 def print_report():
+    print("Printing report....")
     print("Water:", resources["water"], "ml")
     print("Milk:", resources["milk"], "ml")
     print("Coffee:", resources["coffee"], "g")
@@ -90,7 +92,17 @@ def make_coffee(order_drink, insert):
     print(f"Here is ${change:.2f} dollars in change.")
     print(f"Here is your {order_drink}. Enjoy!")
 
-    
+#8 Refill
+def refill():
+    print("Current resources:")
+    print_report()
+    fill_in = input("What material would you like to refill (water/milk/coffee)?")
+    amount = input("How much are you adding?")
+    global resources
+    resources[fill_in] += int(amount)
+    print("Updated resources:")
+    print_report()
+
 #1. Prompt user by asking “ What would you like? (espresso/latte/cappuccino):
 order = input("What would you like? (espresso/latte/cappuccino):")
 
@@ -100,6 +112,8 @@ while True:
         break
     elif order == "report":
         print_report()
+    elif order == "refill":
+        refill()
     elif order not in ["espresso", "latte", "cappuccino"]:
         print("Sorry. I don't understand.")
     else:
