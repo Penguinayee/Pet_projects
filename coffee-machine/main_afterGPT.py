@@ -78,6 +78,7 @@ def make_coffee(order_drink, insert):
     #insert = process_coins(q, d, n, p)
     if not check_resource(order_drink):
         return
+    print("Please insert coins.")
     if not check_transaction(order_drink, insert):
         return
     
